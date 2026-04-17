@@ -6,7 +6,7 @@
 //   curl 'https://allaccess.co/api/submissions?key=YOUR_ADMIN_KEY'
 //   curl 'https://allaccess.co/api/submissions?key=YOUR_ADMIN_KEY&limit=50'
 
-import { sql, hasDb } from './_db.js';
+import { getSql, hasDb } from './_db.js';
 
 export const config = { runtime: 'nodejs' };
 
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  if (!hasDb) {
+  if (!hasDb()) {
     return res.status(503).json({ error: 'Database not configured yet.' });
   }
 
@@ -36,6 +36,7 @@ export default async function handler(req, res) {
   const limit = Number.isFinite(rawLimit) ? Math.min(Math.max(rawLimit, 1), 500) : 100;
 
   try {
+    const sql = getSql();
     const rows = await sql`
       SELECT id, name, email, phone, message, created_at, ip
       FROM submissions

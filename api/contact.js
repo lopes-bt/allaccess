@@ -5,12 +5,12 @@
 // Required env var (set automatically when you connect a Neon database to the
 // Vercel project): DATABASE_URL
 
-import { sql, hasDb } from './_db.js';
+import { getSql, hasDb } from './_db.js';
 
 export const config = { runtime: 'nodejs' };
 
 let tableEnsured = false;
-async function ensureTable() {
+async function ensureTable(sql) {
   if (tableEnsured) return;
   await sql`
     CREATE TABLE IF NOT EXISTS submissions (
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (!hasDb) {
+  if (!hasDb()) {
     return res.status(503).json({ error: 'Database not configured yet.' });
   }
 
@@ -74,7 +74,8 @@ export default async function handler(req, res) {
   const referrer = req.headers.referer || req.headers.referrer || null;
 
   try {
-    await ensureTable();
+    const sql = getSql();
+    await ensureTable(sql);
     const rows = await sql`
       INSERT INTO submissions (name, email, phone, message, ip, user_agent, referrer)
       VALUES (${name}, ${email}, ${phone || null}, ${message}, ${ip}, ${ua}, ${referrer})
