@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 110" fill="none">
+  <!-- "All" pill (filled) -->
+  <rect x="2" y="10" width="150" height="90" rx="45" ry="45" fill="#FFFFFF"/>
+  <text x="77" y="73" font-family="'Apfel Grotezk','Space Grotesk','Inter',sans-serif"
+        font-size="58" font-weight="500" fill="#0A0A0A" text-anchor="middle"
+        letter-spacing="-1">All</text>
+
+  <!-- "Access" pill (outlined) -->
+  <rect x="166" y="10" width="252" height="90" rx="45" ry="45"
+        fill="none" stroke="#FFFFFF" stroke-width="4"/>
+  <text x="292" y="73" font-family="'Apfel Grotezk','Space Grotesk','Inter',sans-serif"
+        font-size="58" font-weight="500" fill="#FFFFFF" text-anchor="middle"
+        letter-spacing="-1">Access</text>
+
+  <!-- "+" mark -->
+  <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="square">
+    <line x1="438" y1="55" x2="472" y2="55"/>
+    <line x1="455" y1="38" x2="455" y2="72"/>
+  </g>
+</svg>

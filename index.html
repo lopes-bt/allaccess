@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Access Agency</title>
+  <meta name="description" content="A studio for the live era." />
+  <meta name="theme-color" content="#0A0A0A" />
+  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
+
+  <meta property="og:title" content="All Access Agency" />
+  <meta property="og:description" content="A studio for the live era." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ============ PERSISTENT CHROME — TOP ============ -->
+  <header class="chrome chrome--top">
+    <a href="#cover" class="mark" aria-label="All Access Agency">
+      <img src="assets/logos/mark.svg" alt="" width="64" height="24" />
+    </a>
+
+    <div class="live" aria-live="polite">
+      <span class="live__dot" aria-hidden="true"></span>
+      <span class="live__label">On Air</span>
+      <span class="live__sep" aria-hidden="true">·</span>
+      <span class="live__count" id="chapter">01</span>
+      <span class="live__total">/&nbsp;06</span>
+    </div>
+  </header>
+
+  <!-- ============ FILM REEL ============ -->
+  <main class="reel" id="reel">
+
+    <!-- 01 — COVER -->
+    <section class="frame" id="cover" data-label="Cover" data-num="01">
+      <article class="card">
+        <span class="card__corner card__corner--tl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--tr" aria-hidden="true"></span>
+        <span class="card__corner card__corner--bl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--br" aria-hidden="true"></span>
+        <span class="card__bg" aria-hidden="true">+</span>
+
+        <header class="card__head">
+          <span>Est. 2026</span>
+          <span>Los Angeles · Miami · New York City</span>
+        </header>
+
+        <div class="card__body card__body--cover">
+          <h1 class="card__brand">all access agency</h1>
+          <p class="card__line">
+            A studio for the live era. Production, talent and brand
+            partnerships — for the next generation of streamers.
+          </p>
+        </div>
+
+        <footer class="card__foot">
+          <span class="card__index">A.A — 0001</span>
+          <a href="#production" class="card__next" data-jump>Next — Production →</a>
+        </footer>
+      </article>
+    </section>
+
+    <!-- 02 — PRODUCTION -->
+    <section class="frame" id="production" data-label="Production" data-num="02">
+      <article class="card">
+        <span class="card__corner card__corner--tl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--tr" aria-hidden="true"></span>
+        <span class="card__corner card__corner--bl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--br" aria-hidden="true"></span>
+        <span class="card__bg" aria-hidden="true">02</span>
+
+        <header class="card__head">
+          <span>Ch. 02 · Studio</span>
+          <span>Fig. 02</span>
+        </header>
+
+        <div class="card__body">
+          <h2 class="card__name">Production</h2>
+          <p class="card__line">
+            Studios, sets, cameras, graphics, rundowns. Built and run
+            end-to-end.
+          </p>
+        </div>
+
+        <footer class="card__foot">
+          <span class="card__index">A.A — 0002</span>
+          <a href="#talent" class="card__next" data-jump>Next — Talent →</a>
+        </footer>
+      </article>
+    </section>
+
+    <!-- 03 — TALENT -->
+    <section class="frame" id="talent" data-label="Talent" data-num="03">
+      <article class="card">
+        <span class="card__corner card__corner--tl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--tr" aria-hidden="true"></span>
+        <span class="card__corner card__corner--bl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--br" aria-hidden="true"></span>
+        <span class="card__bg" aria-hidden="true">03</span>
+
+        <header class="card__head">
+          <span>Ch. 03 · Roster</span>
+          <span>Fig. 03</span>
+        </header>
+
+        <div class="card__body">
+          <h2 class="card__name">Talent</h2>
+          <p class="card__line">
+            Streamers, developed into brands.
+          </p>
+        </div>
+
+        <footer class="card__foot">
+          <span class="card__index">A.A — 0003</span>
+          <a href="#partnerships" class="card__next" data-jump>Next — Partnerships →</a>
+        </footer>
+      </article>
+    </section>
+
+    <!-- 04 — PARTNERSHIPS -->
+    <section class="frame" id="partnerships" data-label="Partnerships" data-num="04">
+      <article class="card">
+        <span class="card__corner card__corner--tl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--tr" aria-hidden="true"></span>
+        <span class="card__corner card__corner--bl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--br" aria-hidden="true"></span>
+        <span class="card__bg" aria-hidden="true">04</span>
+
+        <header class="card__head">
+          <span>Ch. 04 · Brand</span>
+          <span>Fig. 04</span>
+        </header>
+
+        <div class="card__body">
+          <h2 class="card__name">Partnerships</h2>
+          <p class="card__line">
+            Sponsorships that feel native to the stream.
+          </p>
+        </div>
+
+        <footer class="card__foot">
+          <span class="card__index">A.A — 0004</span>
+          <a href="#ip" class="card__next" data-jump>Next — IP Development →</a>
+        </footer>
+      </article>
+    </section>
+
+    <!-- 05 — IP DEVELOPMENT -->
+    <section class="frame" id="ip" data-label="IP Development" data-num="05">
+      <article class="card">
+        <span class="card__corner card__corner--tl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--tr" aria-hidden="true"></span>
+        <span class="card__corner card__corner--bl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--br" aria-hidden="true"></span>
+        <span class="card__bg" aria-hidden="true">05</span>
+
+        <header class="card__head">
+          <span>Ch. 05 · Originals</span>
+          <span>Fig. 05</span>
+        </header>
+
+        <div class="card__body">
+          <h2 class="card__name">IP Development</h2>
+          <p class="card__line">
+            Original formats, shows and franchises. Built in-house and
+            owned for the live era.
+          </p>
+        </div>
+
+        <footer class="card__foot">
+          <span class="card__index">A.A — 0005</span>
+          <a href="#connect" class="card__next" data-jump>Next — Connect →</a>
+        </footer>
+      </article>
+    </section>
+
+    <!-- 06 — CONNECT -->
+    <section class="frame" id="connect" data-label="Connect" data-num="06">
+      <article class="card">
+        <span class="card__corner card__corner--tl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--tr" aria-hidden="true"></span>
+        <span class="card__corner card__corner--bl" aria-hidden="true"></span>
+        <span class="card__corner card__corner--br" aria-hidden="true"></span>
+        <span class="card__bg" aria-hidden="true">+</span>
+
+        <header class="card__head">
+          <span>Ch. 06 · Signal</span>
+          <span>EOF</span>
+        </header>
+
+        <div class="card__body card__body--connect">
+          <p class="card__quote">
+            The right ecosystem for<br/>
+            <em>the live generation.</em>
+          </p>
+          <a class="card__mail" href="mailto:connect@allaccess.co">
+            connect@allaccess.co
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <footer class="card__foot">
+          <span class="card__index">A.A — 0006</span>
+          <a href="#cover" class="card__next" data-jump>↺ Restart</a>
+        </footer>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- ============ PERSISTENT CHROME — BOTTOM ============ -->
+  <footer class="chrome chrome--bottom">
+    <span class="meta meta--label">
+      <span class="meta__num" id="chapterNum">01</span>
+      <span class="meta__sep" aria-hidden="true">—</span>
+      <span class="meta__name" id="chapterName">Cover</span>
+    </span>
+
+    <span class="meta meta--est">
+      <span class="meta__time" id="time">00:00</span> <span class="meta__zone" id="zone">Local</span>
+    </span>
+  </footer>
+
+  <!-- ============ SCROLL PROGRESS ============ -->
+  <div class="progress" aria-hidden="true">
+    <div class="progress__bar" id="progressBar"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
