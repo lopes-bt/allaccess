@@ -1,0 +1,13 @@
+{
+  "name": "allaccess",
+  "private": true,
+  "version": "1.0.0",
+  "description": "All Access Agency — landing page and contact form backend",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4"
+  }
+}

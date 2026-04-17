@@ -106,14 +106,13 @@
     if (next !== idx) frames[next].scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  /* ---------------- Contact form (Web3Forms) ---------------- */
+  /* ---------------- Contact form → /api/contact (Postgres) ---------------- */
   const form    = $('#contactForm');
   const success = $('#contactSuccess');
   const submit  = $('#contactSubmit');
 
   if (form && success && submit) {
     const submitLabel = submit.querySelector('.contact__submit-label');
-    const originalLabel = submitLabel ? submitLabel.textContent : 'Reach out →';
     const setLabel = (txt) => { if (submitLabel) submitLabel.textContent = txt; };
 
     form.addEventListener('submit', async (e) => {
@@ -125,23 +124,22 @@
       // basic native validation
       if (!form.checkValidity()) { form.reportValidity(); return; }
 
-      // safety: refuse to submit until access key is configured
-      const key = form.access_key && form.access_key.value;
-      if (!key || key.startsWith('PASTE_')) {
-        setLabel('Form not configured');
-        submit.disabled = true;
-        console.warn('[contact] Web3Forms access_key is not set in index.html');
-        return;
-      }
-
       submit.disabled = true;
       setLabel('Sending…');
 
+      const data = new FormData(form);
+      const payload = {
+        name:    data.get('name')    || '',
+        email:   data.get('email')   || '',
+        phone:   data.get('phone')   || '',
+        message: data.get('message') || '',
+      };
+
       try {
-        const res = await fetch('https://api.web3forms.com/submit', {
+        const res = await fetch('/api/contact', {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form),
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
         });
         const json = await res.json().catch(() => ({}));
 
@@ -150,7 +148,7 @@
           success.hidden = false;
           success.setAttribute('aria-live', 'polite');
         } else {
-          throw new Error(json.message || `HTTP ${res.status}`);
+          throw new Error(json.error || `HTTP ${res.status}`);
         }
       } catch (err) {
         console.error('[contact]', err);

@@ -216,10 +216,7 @@
             <em>the live generation.</em>
           </p>
 
-          <form class="contact" id="contactForm" novalidate>
-            <input type="hidden" name="access_key" value="PASTE_WEB3FORMS_ACCESS_KEY_HERE" />
-            <input type="hidden" name="subject" value="New inquiry — All Access Agency" />
-            <input type="hidden" name="from_name" value="allaccess.co" />
+          <form class="contact" id="contactForm" action="/api/contact" method="POST" novalidate>
             <input type="checkbox" name="botcheck" class="contact__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
             <div class="contact__row">
