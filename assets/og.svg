@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+
+  <defs>
+    <radialGradient id="vig" cx="50%" cy="50%" r="70%">
+      <stop offset="0%"  stop-color="#0A0A0A" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#vig)"/>
+
+  <!-- TOP-LEFT: AA+ mark -->
+  <g transform="translate(64, 56)" opacity="0.95">
+    <circle cx="16" cy="16" r="15" fill="#FFFFFF"/>
+    <text x="16" y="22" font-family="'Courier New', Courier, monospace" font-size="17" font-weight="500" fill="#0A0A0A" text-anchor="middle" letter-spacing="-0.5">A</text>
+    <circle cx="48" cy="16" r="14" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>
+    <text x="48" y="22" font-family="'Courier New', Courier, monospace" font-size="17" font-weight="500" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.5">A</text>
+    <g stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="square">
+      <line x1="68" y1="16" x2="80" y2="16"/>
+      <line x1="74" y1="10" x2="74" y2="22"/>
+    </g>
+  </g>
+
+  <!-- TOP-RIGHT: ON AIR -->
+  <circle cx="912" cy="68" r="6" fill="#E11D26"/>
+  <text x="1136" y="72" text-anchor="end" font-family="'Courier New', Courier, monospace" font-size="15" font-weight="400" fill="#B8B8B8" letter-spacing="3">ON AIR &#183; 01 / 06</text>
+
+  <!-- ============ CARD ============ -->
+  <g stroke="#B8B8B8" stroke-width="1.6" fill="none">
+    <path d="M 240 175 L 240 160 L 256 160"/>
+    <path d="M 944 160 L 960 160 L 960 175"/>
+    <path d="M 240 455 L 240 470 L 256 470"/>
+    <path d="M 944 470 L 960 470 L 960 455"/>
+  </g>
+
+  <!-- Faint background + glyph -->
+  <g opacity="0.07" stroke="#FFFFFF" stroke-width="2" fill="none">
+    <line x1="600" y1="245" x2="600" y2="385"/>
+    <line x1="530" y1="315" x2="670" y2="315"/>
+  </g>
+
+  <!-- Top hairline + meta -->
+  <text x="280" y="220" font-family="'Courier New', Courier, monospace" font-size="14" font-weight="400" fill="#6E6E6E" letter-spacing="2.6">EST. 2026</text>
+  <text x="920" y="220" text-anchor="end" font-family="'Courier New', Courier, monospace" font-size="14" font-weight="400" fill="#6E6E6E" letter-spacing="2.6">LOS ANGELES &#183; MIAMI &#183; NYC</text>
+  <line x1="280" y1="232" x2="920" y2="232" stroke="#2A2A2A" stroke-width="1"/>
+
+  <!-- Brand wordmark -->
+  <text x="600" y="320" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="56" font-weight="400" fill="#FFFFFF" letter-spacing="6">all access agency</text>
+
+  <!-- Tagline -->
+  <text x="600" y="372" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="20" font-weight="300" fill="#B8B8B8" letter-spacing="0.5">A studio for the live era.</text>
+  <text x="600" y="400" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="20" font-weight="300" fill="#B8B8B8" letter-spacing="0.5">Production &#183; Talent &#183; Partnerships &#183; IP</text>
+
+  <!-- Bottom hairline + meta -->
+  <line x1="280" y1="430" x2="920" y2="430" stroke="#2A2A2A" stroke-width="1"/>
+  <text x="280" y="455" font-family="'Courier New', Courier, monospace" font-size="14" font-weight="400" fill="#6E6E6E" letter-spacing="2.6">A.A &#8212; 0001</text>
+  <text x="920" y="455" text-anchor="end" font-family="'Courier New', Courier, monospace" font-size="14" font-weight="400" fill="#B8B8B8" letter-spacing="2.6">ALLACCESS.CO &#8594;</text>
+
+  <!-- BOTTOM CHROME -->
+  <text x="64" y="582" font-family="'Courier New', Courier, monospace" font-size="13" font-weight="400" fill="#B8B8B8" letter-spacing="2.4">01 &#8212; COVER</text>
+  <text x="1136" y="582" text-anchor="end" font-family="'Courier New', Courier, monospace" font-size="13" font-weight="400" fill="#6E6E6E" letter-spacing="2.4">NOW SHOWING</text>
+
+  <line x1="0" y1="618" x2="1200" y2="618" stroke="#1F1F1F" stroke-width="1"/>
+  <line x1="0" y1="618" x2="200"  y2="618" stroke="#FFFFFF" stroke-width="1"/>
+</svg>
