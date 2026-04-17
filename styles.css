@@ -62,12 +62,23 @@ body::after {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   padding: 22px var(--gutter);
   pointer-events: none;
 }
 .chrome > * { pointer-events: auto; }
-.chrome--top    { top: 0; }
-.chrome--bottom { bottom: 0; }
+.chrome--top    {
+  top: 0;
+  padding-top: max(22px, env(safe-area-inset-top));
+  padding-left:  max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+.chrome--bottom {
+  bottom: 0;
+  padding-bottom: max(22px, env(safe-area-inset-bottom));
+  padding-left:  max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
 
 .mark img { height: 22px; width: auto; opacity: .9; transition: opacity .3s; }
 .mark:hover img { opacity: 1; }
@@ -159,10 +170,11 @@ body::after {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   height: 100vh;
+  height: 100dvh;
   display: grid;
   place-items: center;
   position: relative;
-  padding: 100px var(--gutter);
+  padding: clamp(80px, 12vh, 110px) var(--gutter);
   overflow: hidden;
 }
 
@@ -244,6 +256,9 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  /* tap target */
+  padding: 6px 0;
+  min-height: 32px;
 }
 .card__next::after {
   content: "";
@@ -326,7 +341,9 @@ body::after {
   letter-spacing: .04em;
   color: var(--silver);
   border-bottom: 1px solid var(--rule);
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  /* tap target */
+  min-height: 36px;
   transition: color .35s var(--ease-out), border-color .35s var(--ease-out), gap .35s var(--ease-out);
 }
 .card__mail:hover { color: var(--white); border-color: var(--white); gap: 14px; }
@@ -372,29 +389,102 @@ body::after {
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
-@media (max-width: 640px) {
-  .chrome { padding: 16px var(--gutter); }
-  .live__label { display: none; }
-  .meta--est .meta__zone { display: none; }
-  .meta--est { letter-spacing: .18em; }
+/* — Tablet & below — */
+@media (max-width: 768px) {
+  :root { --gutter: 18px; }
 
-  .card {
-    --pad-x: 22px;
-    --pad-y: 28px;
-    gap: 28px;
-    min-height: clamp(360px, 64vh, 480px);
-  }
-  .card__head, .card__foot {
-    font-size: 9.5px;
-    gap: 12px;
-  }
-  .card__bg { font-size: clamp(160px, 32vh, 240px); }
-  .card__corner { width: 10px; height: 10px; }
+  .chrome--top    { padding-top: max(16px, env(safe-area-inset-top)); }
+  .chrome--bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+
+  .live__label { display: none; }
+
+  .card { --pad-x: 24px; --pad-y: 28px; gap: 28px; }
+  .card__name  { font-size: 16px; letter-spacing: .28em; }
+  .card__brand { font-size: 22px; letter-spacing: .1em; }
+  .card__line  { font-size: 13px; max-width: 38ch; }
+  .card__quote { font-size: 18px; max-width: 22ch; }
+  .card__bg { font-size: clamp(180px, 34vh, 260px); }
 }
 
-@media (max-height: 520px) {
-  .frame { padding: 70px var(--gutter); }
-  .card { min-height: auto; gap: 22px; }
+/* — Phone — */
+@media (max-width: 560px) {
+  :root { --gutter: 16px; }
+
+  /* Top chrome: keep mark + live count (no "ON AIR" word) */
+  .live { gap: 7px; font-size: 9.5px; letter-spacing: .2em; }
+
+  /* Bottom chrome: stack chapter name onto its own line if long, hide zone */
+  .meta { font-size: 9.5px; letter-spacing: .18em; gap: 7px; }
+  .meta--est .meta__zone { display: none; }
+  .meta__name {
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: .15em;
+  }
+
+  /* Card: stack header & footer rows on phones — editorial feel preserved */
+  .card {
+    --pad-x: 18px;
+    --pad-y: 22px;
+    width: calc(100vw - 32px);
+    min-height: 0;
+    gap: 22px;
+  }
+  .card__corner { width: 11px; height: 11px; }
+
+  .card__head,
+  .card__foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 9.5px;
+    letter-spacing: .2em;
+    padding-bottom: 12px;
+  }
+  .card__foot { padding-top: 12px; padding-bottom: 0; }
+
+  /* Right-side items in head/foot align flush left when stacked */
+  .card__head > span:last-child,
+  .card__foot > .card__next { align-self: flex-start; }
+
+  /* Larger tap targets on phones */
+  .card__next { min-height: 44px; padding: 10px 0; }
+  .card__mail { min-height: 44px; padding-bottom: 10px; }
+
+  /* Body text sizing */
+  .card__brand { font-size: clamp(20px, 6.5vw, 26px); letter-spacing: .08em; }
+  .card__name  { font-size: 15px; letter-spacing: .26em; }
+  .card__line  {
+    font-size: 12.5px;
+    line-height: 1.65;
+    max-width: 32ch;
+  }
+  .card__quote { font-size: 17px; line-height: 1.4; max-width: 18ch; }
+
+  /* Background glyph: smaller, kept faint */
+  .card__bg {
+    font-size: clamp(140px, 30vh, 200px);
+    -webkit-text-stroke: 1px rgba(255,255,255,.045);
+            text-stroke: 1px rgba(255,255,255,.045);
+  }
+}
+
+/* — Very narrow / older phones — */
+@media (max-width: 360px) {
+  .card { --pad-x: 16px; --pad-y: 20px; }
+  .card__brand { font-size: 19px; }
+  .card__line  { font-size: 12px; }
+  .meta__name  { max-width: 38vw; }
+}
+
+/* — Landscape phones / very short — */
+@media (max-height: 560px) and (orientation: landscape) {
+  .frame { padding: 60px var(--gutter); }
+  .card { gap: 18px; --pad-y: 18px; }
+  .card__bg { font-size: clamp(120px, 38vh, 180px); }
+  .card__line { line-height: 1.55; }
 }
 
 @media (prefers-reduced-motion: reduce) {
