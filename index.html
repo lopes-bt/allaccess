@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2026-04-17a" />
 </head>
 <body>
   <!-- ============ PERSISTENT CHROME — TOP ============ -->
@@ -207,7 +207,7 @@
 
         <header class="card__head">
           <span>Ch. 06 · Signal</span>
-          <span>EOF</span>
+          <span>Open</span>
         </header>
 
         <div class="card__body card__body--connect">
@@ -215,12 +215,44 @@
             The right ecosystem for<br/>
             <em>the live generation.</em>
           </p>
-          <a class="card__mail" href="mailto:connect@allaccess.co">
-            connect@allaccess.co
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+
+          <form class="contact" id="contactForm" novalidate>
+            <input type="hidden" name="access_key" value="PASTE_WEB3FORMS_ACCESS_KEY_HERE" />
+            <input type="hidden" name="subject" value="New inquiry — All Access Agency" />
+            <input type="hidden" name="from_name" value="allaccess.co" />
+            <input type="checkbox" name="botcheck" class="contact__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="contact__row">
+              <label class="contact__field">
+                <input class="contact__input" type="text" name="name" placeholder="Name" required autocomplete="name" />
+              </label>
+            </div>
+
+            <div class="contact__row contact__row--split">
+              <label class="contact__field">
+                <input class="contact__input" type="email" name="email" placeholder="Email" required autocomplete="email" />
+              </label>
+              <label class="contact__field">
+                <input class="contact__input" type="tel" name="phone" placeholder="Phone" autocomplete="tel" />
+              </label>
+            </div>
+
+            <div class="contact__row">
+              <label class="contact__field">
+                <textarea class="contact__input contact__textarea" name="message" placeholder="What you're building" rows="2" required></textarea>
+              </label>
+            </div>
+
+            <div class="contact__row contact__row--submit">
+              <button type="submit" class="contact__submit" id="contactSubmit">
+                <span class="contact__submit-label">Reach out →</span>
+              </button>
+            </div>
+          </form>
+
+          <p class="contact__success" id="contactSuccess" hidden>
+            Signal received.<br/>We'll reach out shortly.
+          </p>
         </div>
 
         <footer class="card__foot">
@@ -250,6 +282,6 @@
     <div class="progress__bar" id="progressBar"></div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2026-04-17a"></script>
 </body>
 </html>

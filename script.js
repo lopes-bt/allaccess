@@ -106,6 +106,60 @@
     if (next !== idx) frames[next].scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
+  /* ---------------- Contact form (Web3Forms) ---------------- */
+  const form    = $('#contactForm');
+  const success = $('#contactSuccess');
+  const submit  = $('#contactSubmit');
+
+  if (form && success && submit) {
+    const submitLabel = submit.querySelector('.contact__submit-label');
+    const originalLabel = submitLabel ? submitLabel.textContent : 'Reach out →';
+    const setLabel = (txt) => { if (submitLabel) submitLabel.textContent = txt; };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // honeypot — silently drop bot submissions
+      if (form.botcheck && form.botcheck.checked) return;
+
+      // basic native validation
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      // safety: refuse to submit until access key is configured
+      const key = form.access_key && form.access_key.value;
+      if (!key || key.startsWith('PASTE_')) {
+        setLabel('Form not configured');
+        submit.disabled = true;
+        console.warn('[contact] Web3Forms access_key is not set in index.html');
+        return;
+      }
+
+      submit.disabled = true;
+      setLabel('Sending…');
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        });
+        const json = await res.json().catch(() => ({}));
+
+        if (res.ok && json.success) {
+          form.classList.add('is-hidden');
+          success.hidden = false;
+          success.setAttribute('aria-live', 'polite');
+        } else {
+          throw new Error(json.message || `HTTP ${res.status}`);
+        }
+      } catch (err) {
+        console.error('[contact]', err);
+        setLabel('Try again →');
+        submit.disabled = false;
+      }
+    });
+  }
+
   /* ---------------- Live local timecode (visitor's tz) ---------------- */
   const zoneEl = $('#zone');
   if (timeEl) {

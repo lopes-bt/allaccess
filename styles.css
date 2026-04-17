@@ -342,11 +342,117 @@ body::after {
   color: var(--silver);
   border-bottom: 1px solid var(--rule);
   padding-bottom: 6px;
-  /* tap target */
   min-height: 36px;
   transition: color .35s var(--ease-out), border-color .35s var(--ease-out), gap .35s var(--ease-out);
 }
 .card__mail:hover { color: var(--white); border-color: var(--white); gap: 14px; }
+
+/* ==========================================================================
+   CONTACT FORM (connect frame)
+   ========================================================================== */
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.contact__row {
+  display: flex;
+  gap: 14px;
+}
+.contact__field { display: block; flex: 1; min-width: 0; }
+.contact__honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.contact__input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--white);
+  font: 400 13px/1.6 var(--mono);
+  letter-spacing: .025em;
+  padding: 10px 2px;
+  outline: none;
+  border-radius: 0;
+  transition: border-color .3s var(--ease-out);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.contact__input::placeholder {
+  color: var(--mute);
+  text-transform: uppercase;
+  font-size: 10.5px;
+  letter-spacing: .25em;
+}
+.contact__input:focus,
+.contact__input:focus-visible { border-color: var(--white); }
+.contact__input:-webkit-autofill {
+  -webkit-text-fill-color: var(--white);
+  -webkit-box-shadow: 0 0 0 1000px var(--black) inset;
+  caret-color: var(--white);
+}
+.contact__textarea {
+  resize: vertical;
+  min-height: 52px;
+  max-height: 140px;
+  font-family: var(--mono);
+  line-height: 1.5;
+  padding-top: 12px;
+}
+
+.contact__row--submit {
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.contact__submit {
+  background: transparent;
+  border: 1px solid var(--silver);
+  color: var(--silver);
+  padding: 12px 22px;
+  font: 400 10.5px/1 var(--mono);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  min-height: 44px;
+  transition: color .3s var(--ease-out), border-color .3s var(--ease-out), background .3s var(--ease-out), transform .3s var(--ease-out);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.contact__submit:hover {
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+}
+.contact__submit:active { transform: translateY(1px); }
+.contact__submit:disabled { opacity: .35; cursor: not-allowed; transform: none; }
+.contact__submit:disabled:hover { background: transparent; color: var(--silver); border-color: var(--silver); }
+
+.contact__success {
+  text-align: center;
+  font: 400 14px/1.6 var(--mono);
+  color: var(--silver);
+  letter-spacing: .03em;
+  padding: 24px 0;
+  max-width: 32ch;
+  margin: 0 auto;
+}
+.contact.is-hidden { display: none; }
+
+/* Connect frame: shrink quote slightly to make room for the form */
+.card__body--connect .card__quote {
+  font-size: clamp(15px, 1.4vw, 19px);
+  max-width: 22ch;
+  margin: 0 auto;
+  text-align: center;
+}
 
 /* ==========================================================================
    FRAME TRANSITION — wipe in / wipe out (CSS scroll-driven)
@@ -469,6 +575,14 @@ body::after {
     -webkit-text-stroke: 1px rgba(255,255,255,.045);
             text-stroke: 1px rgba(255,255,255,.045);
   }
+
+  /* Contact form: stack email + phone */
+  .contact { gap: 10px; max-width: 100%; }
+  .contact__row--split { flex-direction: column; gap: 10px; }
+  .contact__row--submit { justify-content: stretch; }
+  .contact__submit { width: 100%; }
+  .contact__input { font-size: 14px; padding: 11px 2px; } /* 16px+ would be ideal but tracks too wide */
+  .contact__input::placeholder { font-size: 10px; letter-spacing: .22em; }
 }
 
 /* — Very narrow / older phones — */
