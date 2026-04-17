@@ -288,7 +288,7 @@ body::after {
   font-weight: 400;
   font-size: clamp(20px, 2.2vw, 30px);
   letter-spacing: .12em;
-  text-transform: lowercase;
+  text-transform: uppercase;
   color: var(--white);
   line-height: 1;
 }
